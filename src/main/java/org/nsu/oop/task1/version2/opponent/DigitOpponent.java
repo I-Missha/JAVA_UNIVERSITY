@@ -6,13 +6,17 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class DigitOpponent {
     private String quest;
+    private int lengthSeq = 4;
 
+    public DigitOpponent(int lengthSeq) {
+        this.lengthSeq = lengthSeq;
+    }
 
     private String generatequest() {
         StringBuilder str = new StringBuilder();
         HashSet<Integer> st = new HashSet<>();
         ThreadLocalRandom random = ThreadLocalRandom.current();
-        while (str.length() < 4) {
+        while (str.length() < lengthSeq) {
             int rand = random.nextInt(1, 11);
             if (!st.contains(rand)) {
                 str.append(rand);
@@ -27,10 +31,10 @@ public class DigitOpponent {
         quest = generatequest();
     }
 
-    public int countCaws(String str) {
+    public int countCows(String str) {
         int counter = 0;
         for (char it: str.toCharArray()) {
-            if (quest.indexOf((int)it) > -1) {
+            if (quest.indexOf((int)it) > -1 && quest.indexOf(it) != str.indexOf(it)) {
                 counter++;
             }
         }
