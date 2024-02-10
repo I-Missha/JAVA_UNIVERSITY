@@ -1,3 +1,5 @@
+package org.nsu.oop.task1.version1;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.Reader;

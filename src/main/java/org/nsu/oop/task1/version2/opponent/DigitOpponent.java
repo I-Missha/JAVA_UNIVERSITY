@@ -12,7 +12,7 @@ public class DigitOpponent {
         this.lengthSeq = lengthSeq;
     }
 
-    private String generatequest() {
+    private String generateQuest() {
         StringBuilder str = new StringBuilder();
         HashSet<Integer> st = new HashSet<>();
         ThreadLocalRandom random = ThreadLocalRandom.current();
@@ -28,7 +28,7 @@ public class DigitOpponent {
     }
 
     public DigitOpponent() {
-        quest = generatequest();
+        quest = generateQuest();
     }
 
     public int countCows(String str) {
