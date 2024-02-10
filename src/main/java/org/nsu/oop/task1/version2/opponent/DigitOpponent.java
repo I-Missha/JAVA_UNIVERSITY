@@ -8,11 +8,7 @@ public class DigitOpponent {
     private String quest;
     private int lengthSeq = 4;
 
-    public DigitOpponent(int lengthSeq) {
-        this.lengthSeq = lengthSeq;
-    }
-
-    private String generatequest() {
+    private String generateQuest() {
         StringBuilder str = new StringBuilder();
         HashSet<Integer> st = new HashSet<>();
         ThreadLocalRandom random = ThreadLocalRandom.current();
@@ -23,18 +19,22 @@ public class DigitOpponent {
                 st.add(rand);
             }
         }
-
         return str.toString();
     }
 
+    public DigitOpponent(int lengthSeq) {
+        quest = generateQuest();
+        this.lengthSeq = lengthSeq;
+    }
+
     public DigitOpponent() {
-        quest = generatequest();
+        quest = generateQuest();
     }
 
     public int countCows(String str) {
         int counter = 0;
         for (char it: str.toCharArray()) {
-            if (quest.indexOf((int)it) > -1 && quest.indexOf(it) != str.indexOf(it)) {
+            if (quest.indexOf(it) > -1 && quest.indexOf(it) != str.indexOf(it)) {
                 counter++;
             }
         }
@@ -53,5 +53,9 @@ public class DigitOpponent {
 
     public boolean isCorrect(String str) {
         return countBulls(str) == 4;
+    }
+
+    public String getAnswer() {
+        return this.quest;
     }
 }

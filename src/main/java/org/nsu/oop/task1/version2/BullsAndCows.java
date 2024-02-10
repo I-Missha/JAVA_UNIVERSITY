@@ -15,18 +15,19 @@ public class BullsAndCows {
         return pattern.matcher(strNum).matches();
     }
 
-    public void startGameOnDigits() {
+    public void startGameOnDigits() throws RuntimeException {
         System.out.println("You can start guessing");
-        ConsoleInput input = new ConsoleInput();
-        ConsoleOutput output = new ConsoleOutput();
         config = new Config();
         config.setSequenceLength(4);
+        ConsoleInput input = new ConsoleInput(config);
+        ConsoleOutput output = new ConsoleOutput();
         DigitOpponent opponent = new DigitOpponent(config.getLengthOfSequence());
         String str;
-        do {
-            str = input.getConsoleInput();
-            if (str.length() != config.getLengthOfSequence() || !isNumeric(str)) {
-                output.consoleOut("Invalid input, try again");
+        while(true) {
+            try {
+                str = input.getConsoleInput();
+            } catch(IllegalArgumentException e) {
+                System.err.println("Illegal argument input, enter 4 different digits in a line");
                 continue;
             }
             if (opponent.isCorrect(str)) {
@@ -35,7 +36,7 @@ public class BullsAndCows {
             }
             output.consoleOut("Cows: " + opponent.countCows(str));
             output.consoleOut("Bulls: " + opponent.countBulls(str));
-        } while (!opponent.isCorrect(str));
+        }
     }
     public void changeConfig(int length) {
         config.setSequenceLength(length);
