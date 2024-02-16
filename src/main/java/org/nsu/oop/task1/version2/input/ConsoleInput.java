@@ -40,7 +40,4 @@ public class ConsoleInput implements Input{
         legal = true;
         return str;
     }
-    public boolean isLegal() {
-        return legal;
-    }
 }
