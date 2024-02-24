@@ -1,14 +1,13 @@
-package org.nsu.oop.task1.version2;
+package org.nsu.oop.task1.version2.input;
 
-import org.junit.Test;
-import org.nsu.oop.task1.version2.input.ConsoleInput;
+import org.junit.jupiter.api.Test;
 import org.nsu.oop.task1.version2.util.Config;
+
 import java.io.ByteArrayInputStream;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class ConsoleInputTest {
+class ConsoleInputTest {
     void provideInput(String data) {
         ByteArrayInputStream testIn = new ByteArrayInputStream(data.getBytes());
         System.setIn(testIn);
