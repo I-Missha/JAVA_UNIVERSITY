@@ -11,4 +11,12 @@ public class Data {
         this.stack = new Stack<>();
         this.varMap = new HashMap<>();
     }
+
+    public void push(double element) {
+        stack.push(element);
+    }
+
+    public double pop() {
+        return stack.pop();
+    }
 }

@@ -36,7 +36,7 @@
             <manifest>
               <addClasspath>true</addClasspath>
               <classpathPrefix>lib/</classpathPrefix>
-              <mainClass>org.nsu.oop.task1.App</mainClass>
+              <mainClass>jorg.nsu.oop.task2.Main</mainClass>
             </manifest>
           </archive>
         </configuration>

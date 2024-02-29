@@ -4,17 +4,17 @@ import org.nsu.oop.task2.util.Data;
 
 import java.util.Vector;
 
-public class CommandPop extends Command{
-    public CommandPop() {
-        super(0);
+public class CommandPush extends Command{
+
+    public CommandPush() {
+        super(1);
     }
 
     @Override
-    public void executeCommand(Data data, Vector<Object> argsVec) throws Exception {
+    public void executeCommand(Data data, Vector<Object> argsVec) throws Exception{
         if (isNumOfArgumentsCorrect(argsVec.size())) {
             throw new Exception();
         }
-        data.pop();
+        data.push( (double) argsVec.getFirst());
     }
-
 }

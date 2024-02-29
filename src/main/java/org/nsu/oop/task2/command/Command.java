@@ -1,9 +1,22 @@
 package org.nsu.oop.task2.command;
 
-public abstract class Command {
-    public Command() {}
+import org.nsu.oop.task2.util.Data;
 
-    public void execute(){};
+import java.util.Vector;
+
+public abstract class Command {
+    int numOfArguments;
+    public Command(int numOfArguments) {
+        this.numOfArguments = numOfArguments;
+    }
+
+    protected boolean isNumOfArgumentsCorrect(int num) {
+        return num == numOfArguments;
+    }
+
+    public void executeCommand(Data data, Vector<Object> argsVec) throws Exception {
+
+    };
 
 }
 

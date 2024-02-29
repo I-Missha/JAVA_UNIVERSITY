@@ -32,8 +32,8 @@ public class Calculator {
     }
 
     public void startCalc() {
-//        CommandFactory -> foreach
-
+//  stream -> createCommand -> run command
+//    stream.forEach( -> System.out.println(str));
     }
 
 }
