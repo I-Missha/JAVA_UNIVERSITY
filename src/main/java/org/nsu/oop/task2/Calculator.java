@@ -33,6 +33,7 @@ public class Calculator {
 
     public void startCalc() {
 //        CommandFactory -> foreach
+
     }
 
 }
