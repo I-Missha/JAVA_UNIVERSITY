@@ -14,7 +14,7 @@ public class Parser {
         StringBuilder tempStr = new StringBuilder();
         for (char ch: chars ) {
             boolean isLetter = Character.isLetterOrDigit((char) ch);
-            if (tempStr.isEmpty() && !isLetter) {
+            if (tempStr.length() == 0 && !isLetter) {
                 continue;
             }
             if (isLetter) {

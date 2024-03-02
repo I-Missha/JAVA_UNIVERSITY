@@ -51,6 +51,34 @@ public class DigitOpponent {
         return counter;
     }
 
+    public void setSequenceNumb(String seq) {
+        if (seq == null) {
+            throw new RuntimeException("reference is null");
+        }
+
+        if (seq.length() != lengthSeq) {
+            throw new RuntimeException("sequence does not fit to config");
+        }
+
+        char[] strMas = seq.toCharArray();
+
+        for (int i = 0; i < seq.length() - 1; i++) {
+            if (!Character.isDigit(strMas[i])) {
+                throw new RuntimeException("sequence does not fit to config");
+            }
+        }
+
+        for (int i = 0; i < seq.length() - 1; i++) {
+            for (int j = i + 1; j < seq.length() - 1; j++) {
+                if (strMas[i] == strMas[j]) {
+                    throw new RuntimeException("sequence contains same numbers");
+                }
+            }
+        }
+
+        quest = seq;
+    }
+
     public boolean isCorrect(String str) {
         return countBulls(str) == 4;
     }

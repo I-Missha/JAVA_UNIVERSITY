@@ -8,10 +8,12 @@ public class ConsoleInput implements Input{
     Config config;
     boolean legal = true;
     private Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+
     public ConsoleInput(Config conf) {
         in = new Scanner(System.in);
         this.config = conf;
     }
+
     private boolean isNumeric(String strNum) {
         if (strNum == null) {
             return false;
@@ -20,8 +22,8 @@ public class ConsoleInput implements Input{
     }
     private boolean isUniq(String str) {
         char[] strMas = str.toCharArray();
-        for (int i = 0; i < str.length(); i++) {
-            for (int j = i + 1; j < str.length(); j++) {
+        for (int i = 0; i < str.length() - 1; i++) {
+            for (int j = i + 1; j < str.length() - 1; j++) {
                 if (strMas[i] == strMas[j]) {
                     return false;
                 }
