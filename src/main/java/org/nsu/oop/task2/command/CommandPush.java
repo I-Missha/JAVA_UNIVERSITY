@@ -11,10 +11,10 @@ public class CommandPush extends Command{
     }
 
     @Override
-    public void executeCommand(Data data, Vector<Object> argsVec) throws Exception{
-        if (isNumOfArgumentsCorrect(argsVec.size())) {
+    public void executeCommand(Data data, String[] argsString) throws Exception{
+        if (isNumOfArgumentsCorrect(argsString.length)) {
             throw new Exception();
         }
-        data.push( (double) argsVec.getFirst());
+        data.push( Double.parseDouble(argsString[0]));
     }
 }

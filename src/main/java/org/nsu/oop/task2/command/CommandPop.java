@@ -10,8 +10,8 @@ public class CommandPop extends Command{
     }
 
     @Override
-    public void executeCommand(Data data, Vector<Object> argsVec) throws Exception {
-        if (isNumOfArgumentsCorrect(argsVec.size())) {
+    public void executeCommand(Data data,String[] argsString) throws Exception {
+        if (isNumOfArgumentsCorrect(argsString.length)) {
             throw new Exception();
         }
         data.pop();

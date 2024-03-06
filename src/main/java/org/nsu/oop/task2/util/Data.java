@@ -16,7 +16,10 @@ public class Data {
         stack.push(element);
     }
 
-    public double pop() {
+    public double pop() throws Exception {
+        if (stack.empty()) {
+            throw new Exception();
+        }
         return stack.pop();
     }
 }

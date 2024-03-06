@@ -14,9 +14,11 @@ public abstract class Command {
         return num == numOfArguments;
     }
 
-    public void executeCommand(Data data, Vector<Object> argsVec) throws Exception {
+    public void executeCommand(Data data, String[] argsVec) throws Exception {
 
     };
+
+    public abstract void executeCommand(Data data, String[] argsString) throws Exception;
 
 }
 

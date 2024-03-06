@@ -18,12 +18,14 @@ public class CommandFactory {
         }
     }
 
-    Object createClass(String commandName) throws Exception {
+    public Command createClass(String commandName) throws RuntimeException {
         try {
-            return commandsMap.get(commandName).getDeclaredConstructor().newInstance();
+            return (Command) commandsMap.get(commandName).getDeclaredConstructor().newInstance();
         } catch (NoSuchMethodException | InstantiationException | IllegalFormatWidthException |
                  InvocationTargetException e) {
-            throw new Exception(e.getMessage());
+            throw new RuntimeException();
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
         }
     }
 }
