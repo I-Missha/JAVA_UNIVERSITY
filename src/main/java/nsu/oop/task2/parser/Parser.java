@@ -1,4 +1,4 @@
-package org.nsu.oop.task2.parsers;
+package nsu.oop.task2.parser;
 
 import java.util.Arrays;
 

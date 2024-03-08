@@ -1,9 +1,9 @@
-package org.nsu.oop.task2.command;
+package nsu.oop.task2.command;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import nsu.oop.task2.errors.CommandCreationException;
+import nsu.oop.task2.errors.FileException;
+
+import java.io.*;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -11,38 +11,27 @@ public class CommandsContainer {
     HashMap<String, Class<?>> commandsMap;
     final private String configFilePath = "/config.txt";
 
-    public CommandsContainer() throws Exception {
+    public CommandsContainer() throws FileException, CommandCreationException {
         commandsMap = new HashMap<>();
-        InputStream stream = this.getClass().getResourceAsStream(configFilePath);
-
+        InputStream stream = CommandsContainer.class.getResourceAsStream(configFilePath);
         if (stream == null) {
-//            throw new ConfigException();
-            throw new Exception();
+            throw new FileException("can't open file with path: " + configFilePath);
         }
-
         Scanner scanner = new Scanner(stream);
 
         while(scanner.hasNext()) {
             // str have to contain name of class and object of class
             String[] str = scanner.nextLine().split("\\s*=\\s*");
 
-            if (str.length < 2) {
-                throw new Exception();
-            }
-
             try {
                 commandsMap.put(str[0], Class.forName(str[1]));
             } catch (ClassNotFoundException e) {
-                throw new Exception();
+                throw new CommandCreationException("can't find class with the name: " + str[1]);
             }
         }
     }
 
-    public HashMap<String, Class<?>> getCommandsAsHashMap() throws Exception {
-        if (commandsMap == null) {
-            throw new Exception();
-        }
-
+    public HashMap<String, Class<?>> getCommandsAsHashMap() {
         return commandsMap;
     }
 }

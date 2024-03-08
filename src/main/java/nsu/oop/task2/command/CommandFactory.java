@@ -1,20 +1,20 @@
-package org.nsu.oop.task2.command;
+package nsu.oop.task2.command;
 
-import java.io.InputStream;
+import nsu.oop.task2.errors.CommandCreationException;
+import nsu.oop.task2.errors.FileException;
+
 import java.lang.reflect.InvocationTargetException;
-import java.net.ConnectException;
 import java.util.HashMap;
 import java.util.IllegalFormatWidthException;
-import java.util.Scanner;
 
 public class CommandFactory {
     final private HashMap<String, Class<?>> commandsMap;
-    public CommandFactory() throws Exception {
+    public CommandFactory() throws FileException, CommandCreationException {
         try {
             CommandsContainer commandsContainer = new CommandsContainer();
             commandsMap = commandsContainer.getCommandsAsHashMap();
-        } catch (Exception e) {
-            throw new Exception();
+        } catch (FileException | CommandCreationException exception) {
+            throw exception;
         }
     }
 

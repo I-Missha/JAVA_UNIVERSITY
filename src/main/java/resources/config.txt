@@ -1,0 +1,9 @@
+POP=nsu.oop.task2.command.CommandPop
+PUSH=nsu.oop.task2.command.CommandPush
+DEFINE=nsu.oop.task2.command.CommandDefine
+PRINT=nsu.oop.task2.command.CommandPrint
+SQRT=nsu.oop.task2.command.CommandSquareRoot
++=nsu.oop.task2.command.CommandPlus
+-=nsu.oop.task2.command.CommandMinus
+*=nsu.oop.task2.command.CommandMultiply
+/=nsu.oop.task2.command.CommandDivide

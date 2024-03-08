@@ -1,4 +1,4 @@
-package org.nsu.oop.task1;
+package nsu.oop.task1;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
