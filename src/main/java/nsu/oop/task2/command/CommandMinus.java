@@ -6,7 +6,7 @@ import nsu.oop.task2.errors.DataException;
 import nsu.oop.task2.util.Data;
 
 public class CommandMinus extends BinaryCommand{
-    public CommandMinus() throws DataException {
+    public CommandMinus(){
         super();
     }
 

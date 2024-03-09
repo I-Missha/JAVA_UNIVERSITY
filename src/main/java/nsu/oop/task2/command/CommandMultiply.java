@@ -6,7 +6,7 @@ import nsu.oop.task2.errors.DataException;
 import nsu.oop.task2.util.Data;
 
 public class CommandMultiply extends BinaryCommand{
-    public CommandMultiply() throws DataException {
+    public CommandMultiply() {
         super();
     }
 

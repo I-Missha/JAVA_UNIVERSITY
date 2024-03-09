@@ -12,7 +12,6 @@ public class CommandSquareRoot extends Command{
     @Override
     public void executeCommand(Data data, String[] argsString) throws DataException {
         double operand;
-//       ошибку надо обрабатывать
         try {
             operand = data.pop();
         } catch(DataException exception) {

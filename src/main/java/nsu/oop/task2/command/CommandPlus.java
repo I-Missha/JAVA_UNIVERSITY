@@ -6,8 +6,6 @@ import nsu.oop.task2.errors.DataException;
 import nsu.oop.task2.util.Data;
 
 public class CommandPlus extends BinaryCommand{
-
-
     public CommandPlus() {
         super();
     }
