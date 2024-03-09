@@ -1,15 +1,19 @@
 package nsu.oop.task2.parser;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 
-public class ParserTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.*;
 
-    public void testGetCommandName() {
+class ParserTest {
+
+    @Test
+    void getCommandName() {
         Parser parser = new Parser("PUSH");
         assertEquals(parser.getCommandName(), "PUSH");
     }
 
-    public void testGetArgs() {
+    @Test
+    void getArgs() {
         Parser parser = new Parser("PUSH");
         String[] empty = new String[0];
         assertEquals(parser.getArgs().length, empty.length);

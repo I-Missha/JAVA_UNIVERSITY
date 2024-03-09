@@ -1,17 +1,18 @@
 package nsu.oop.task2.command;
 
-import junit.framework.TestCase;
 import nsu.oop.task2.errors.ArgumentsException;
 import nsu.oop.task2.errors.CommandExecutionException;
 import nsu.oop.task2.errors.DataException;
 import nsu.oop.task2.parser.Parser;
 import nsu.oop.task2.util.Data;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class CommandDivideTest extends TestCase {
+class CommandDivideTest {
 
-    public void testExecuteCommand() {
+    @Test
+    void executeCommand() {
         Data data = new Data();
         CommandDivide comm = new CommandDivide();
         Parser parser = new Parser("/");

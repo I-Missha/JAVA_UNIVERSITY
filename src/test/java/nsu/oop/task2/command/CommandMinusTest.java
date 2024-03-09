@@ -1,15 +1,18 @@
 package nsu.oop.task2.command;
 
-import junit.framework.TestCase;
 import nsu.oop.task2.errors.ArgumentsException;
 import nsu.oop.task2.errors.CommandExecutionException;
 import nsu.oop.task2.errors.DataException;
 import nsu.oop.task2.parser.Parser;
 import nsu.oop.task2.util.Data;
+import org.junit.jupiter.api.Test;
 
-public class CommandMinusTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.*;
 
-    public void testExecuteCommand() {
+class CommandMinusTest {
+
+    @Test
+    void executeCommand() {
         Data data = new Data();
         CommandMinus comm = new CommandMinus();
         Parser parser = new Parser("-");
@@ -22,6 +25,5 @@ public class CommandMinusTest extends TestCase {
         } catch(DataException | CommandExecutionException | ArgumentsException e) {
             fail(e.getMessage());
         }
-
     }
 }

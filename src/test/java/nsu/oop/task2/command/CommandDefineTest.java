@@ -1,13 +1,16 @@
 package nsu.oop.task2.command;
 
-import junit.framework.TestCase;
 import nsu.oop.task2.errors.ArgumentsException;
 import nsu.oop.task2.parser.Parser;
 import nsu.oop.task2.util.Data;
+import org.junit.jupiter.api.Test;
 
-public class CommandDefineTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.*;
 
-    public void testExecuteCommand() {
+class CommandDefineTest {
+
+    @Test
+    void executeCommand() {
         Data data = new Data();
         CommandDefine comm = new CommandDefine();
         Parser parser = new Parser("DEFINE var 1");

@@ -1,14 +1,16 @@
 package nsu.oop.task2.command;
 
-import junit.framework.TestCase;
-import nsu.oop.task2.errors.ArgumentsException;
 import nsu.oop.task2.errors.DataException;
 import nsu.oop.task2.parser.Parser;
 import nsu.oop.task2.util.Data;
+import org.junit.jupiter.api.Test;
 
-public class CommandSquareRootTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.*;
 
-    public void testExecuteCommand() {
+class CommandSquareRootTest {
+
+    @Test
+    void executeCommand() {
         Data data = new Data();
         CommandSquareRoot comm = new CommandSquareRoot();
         Parser parser = new Parser("SQRT");
