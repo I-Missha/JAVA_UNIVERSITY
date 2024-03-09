@@ -8,14 +8,16 @@ import java.util.HashMap;
 import java.util.IllegalFormatWidthException;
 
 public class CommandFactory {
-    final private HashMap<String, Class<?>> commandsMap;
-    public CommandFactory() throws FileException, CommandCreationException {
-        try {
-            CommandsContainer commandsContainer = new CommandsContainer();
-            commandsMap = commandsContainer.getCommandsAsHashMap();
-        } catch (FileException | CommandCreationException exception) {
-            throw exception;
-        }
+    private HashMap<String, Class<?>> commandsMap;
+
+    public CommandFactory() {
+
+    }
+
+    public void initial() throws FileException, CommandCreationException {
+        CommandsContainer commandsContainer = new CommandsContainer();
+        commandsMap = commandsContainer.getCommandsAsHashMap();
+        commandsContainer.initial();
     }
 
     public Command createClass(String commandName) throws RuntimeException {

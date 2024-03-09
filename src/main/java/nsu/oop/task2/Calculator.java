@@ -18,24 +18,24 @@ import java.util.stream.Stream;
 public class Calculator {
     private String fileName = null;
     final private Data data; // stack and table of vars
-    final private CommandFactory factory;
     final public Logger logger = LoggerFactory.getLogger(Calculator.class);
 
-    public Calculator(String fileName) throws FileException, CommandCreationException {
+    public Calculator(String fileName) {
         data = new Data();
         this.fileName = fileName;
-        factory = new CommandFactory();
+
     }
 
-    public Calculator() throws FileException, CommandCreationException {
+    public Calculator() {
         data = new Data();
         fileName = null;
-        factory = new CommandFactory();
 
     }
 
-    public void startCalc() throws Exception {
+    public void startCalc() throws FileException, CommandCreationException {
 //  stream -> createCommand -> run command
+        CommandFactory factory = new CommandFactory();
+        factory.initial();
         Stream<String> stream; // stream of commands
 
         if (fileName == null) {
@@ -44,15 +44,15 @@ public class Calculator {
             try {
                 stream = Files.lines(Paths.get(fileName));
             } catch (Exception e) {
-                throw new Exception(e.getMessage());
+                throw new FileException("cant read from the file: " + fileName);
             }
         }
 
-        stream.forEach(this::executeExpression);
-//    stream.forEach( -> System.out.println(str));
+//        stream.forEach(executeExpression);
+    stream.forEach( str -> executeExpression(str, factory));
     }
 
-    private void executeExpression(String inputExpr){
+    private void executeExpression(String inputExpr, CommandFactory factory){
         Parser parser = new Parser(inputExpr);
         Command command = factory.createClass(parser.getCommandName());
 //        System.out.println(command.getClass());

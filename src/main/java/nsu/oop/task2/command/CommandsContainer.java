@@ -4,30 +4,33 @@ import nsu.oop.task2.errors.CommandCreationException;
 import nsu.oop.task2.errors.FileException;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class CommandsContainer {
     HashMap<String, Class<?>> commandsMap;
     final private String configFilePath = "/config.txt";
 
-    public CommandsContainer() throws FileException, CommandCreationException {
+    public CommandsContainer() {
         commandsMap = new HashMap<>();
+    }
+
+    public void initial() throws FileException, CommandCreationException {
         InputStream stream = CommandsContainer.class.getResourceAsStream(configFilePath);
         if (stream == null) {
             throw new FileException("can't open file with path: " + configFilePath);
         }
-        Scanner scanner = new Scanner(stream);
-
-        while(scanner.hasNext()) {
-            // str have to contain name of class and object of class
-            String[] str = scanner.nextLine().split("\\s*=\\s*");
-
-            try {
-                commandsMap.put(str[0], Class.forName(str[1]));
-            } catch (ClassNotFoundException e) {
-                throw new CommandCreationException("can't find class with the name: " + str[1]);
+        Properties properties = new Properties();
+        try {
+            properties.load(stream);
+            for (Object it: properties.keySet()) {
+                commandsMap.put(it.toString(), Class.forName(properties.get(it).toString()));
             }
+        } catch (ClassNotFoundException e) {
+            throw new CommandCreationException("can't find class ");
+        } catch (IOException e) {
+            throw new FileException("cant read from the file, file path: " + configFilePath);
         }
     }
 
