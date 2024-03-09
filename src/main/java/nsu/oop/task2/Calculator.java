@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import nsu.oop.task2.command.Command;
-import nsu.oop.task2.command.CommandFactory;
+import nsu.oop.task2.factory.CommandFactory;
 import nsu.oop.task2.parser.Parser;
 import nsu.oop.task2.util.Data;
 

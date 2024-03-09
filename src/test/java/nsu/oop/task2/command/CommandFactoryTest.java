@@ -3,6 +3,7 @@ package nsu.oop.task2.command;
 import junit.framework.TestCase;
 import nsu.oop.task2.errors.CommandCreationException;
 import nsu.oop.task2.errors.FileException;
+import nsu.oop.task2.factory.CommandFactory;
 
 public class CommandFactoryTest extends TestCase {
 
