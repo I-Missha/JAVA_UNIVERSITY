@@ -1,8 +1,8 @@
 package nsu.oop.task2.factory;
 
 import nsu.oop.task2.command.*;
-import nsu.oop.task2.errors.CommandCreationException;
-import nsu.oop.task2.errors.FileException;
+import nsu.oop.task2.exceptions.CommandCreationException;
+import nsu.oop.task2.exceptions.FileException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,11 +1,9 @@
 package nsu.oop.task2.command;
 
-import nsu.oop.task2.errors.CommandCreationException;
-import nsu.oop.task2.errors.FileException;
+import nsu.oop.task2.exceptions.CommandCreationException;
+import nsu.oop.task2.exceptions.FileException;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 public class CommandsContainer {

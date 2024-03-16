@@ -1,6 +1,6 @@
 package nsu.oop.task2.util;
 
-import nsu.oop.task2.errors.DataException;
+import nsu.oop.task2.exceptions.DataException;
 
 import java.util.HashMap;
 import java.util.Stack;

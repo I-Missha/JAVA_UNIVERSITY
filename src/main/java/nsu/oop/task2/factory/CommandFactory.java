@@ -2,8 +2,8 @@ package nsu.oop.task2.factory;
 
 import nsu.oop.task2.command.Command;
 import nsu.oop.task2.command.CommandsContainer;
-import nsu.oop.task2.errors.CommandCreationException;
-import nsu.oop.task2.errors.FileException;
+import nsu.oop.task2.exceptions.CommandCreationException;
+import nsu.oop.task2.exceptions.FileException;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;

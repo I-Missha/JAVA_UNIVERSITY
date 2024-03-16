@@ -1,4 +1,4 @@
-package nsu.oop.task2.errors;
+package nsu.oop.task2.exceptions;
 
 public class FileException extends Throwable{
     public FileException(String msg) {

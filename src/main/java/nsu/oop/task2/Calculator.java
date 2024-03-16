@@ -1,6 +1,6 @@
 package nsu.oop.task2;
 
-import nsu.oop.task2.errors.*;
+import nsu.oop.task2.exceptions.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

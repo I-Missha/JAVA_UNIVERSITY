@@ -1,8 +1,8 @@
 package nsu.oop.task2.command;
 
-import nsu.oop.task2.errors.ArgumentsException;
-import nsu.oop.task2.errors.CommandExecutionException;
-import nsu.oop.task2.errors.DataException;
+import nsu.oop.task2.exceptions.ArgumentsException;
+import nsu.oop.task2.exceptions.CommandExecutionException;
+import nsu.oop.task2.exceptions.DataException;
 import nsu.oop.task2.util.Data;
 
 public class CommandMinus extends BinaryCommand{

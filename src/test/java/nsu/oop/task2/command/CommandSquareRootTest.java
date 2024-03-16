@@ -1,6 +1,6 @@
 package nsu.oop.task2.command;
 
-import nsu.oop.task2.errors.DataException;
+import nsu.oop.task2.exceptions.DataException;
 import nsu.oop.task2.parser.Parser;
 import nsu.oop.task2.util.Data;
 import org.junit.jupiter.api.Test;
