@@ -47,17 +47,14 @@ public class Calculator {
                 throw new FileException("cant read from the file: " + fileName);
             }
         }
-
-//        stream.forEach(executeExpression);
+        
     stream.forEach( str -> executeExpression(str, factory));
     }
 
     private void executeExpression(String inputExpr, CommandFactory factory){
         Parser parser = new Parser(inputExpr);
         Command command = factory.createClass(parser.getCommandName());
-//        System.out.println(command.getClass());
         try {
-//            Arrays.stream(parser.getArgs()).forEach(str -> System.out.println(str));
             command.executeCommand(data, parser.getArgs());
             logger.debug(command + " was executed.");
         } catch(DataException | ArgumentsException | CommandExecutionException e) {
