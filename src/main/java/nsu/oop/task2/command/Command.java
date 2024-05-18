@@ -34,6 +34,5 @@ public abstract class Command {
     }
 
     public void executeCommand(Data data, String[] argsVec) throws DataException, ArgumentsException, CommandExecutionException {
-
     };
 }

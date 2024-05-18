@@ -7,3 +7,4 @@ SQRT=nsu.oop.task2.command.CommandSquareRoot
 -=nsu.oop.task2.command.CommandMinus
 *=nsu.oop.task2.command.CommandMultiply
 /=nsu.oop.task2.command.CommandDivide
+POW=nsu.oop.task2.command.CommandPow
