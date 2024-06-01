@@ -31,11 +31,5 @@
       <artifactId>logback-classic</artifactId>
       <version>1.4.14</version>
     </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.1</version>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
 </project>
