@@ -17,9 +17,9 @@ public class StoragesMap {
         WarehouseNames(String name) {
             this.name = name;
         }
-//        public String getName() {
-//            return name;
-//        }
+        public String getName() {
+            return name;
+        }
     }
 
     public StoragesMap(MotorsStorage motorsWarehouse, BodiesStorage bodiesWarehouse, AccessoriesStorage accessoriesWarehouse, CarsStorage carsWarehouse) {

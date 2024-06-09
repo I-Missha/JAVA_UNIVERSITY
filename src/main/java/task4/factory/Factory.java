@@ -1,7 +1,7 @@
 package task4.factory;
 
+import task4.factory.BlockingQueueModel.BlockingQueue;
 import task4.factory.CarsStorageController.CarsStorageController;
-import task4.factory.CarsStorageController.TasksController;
 import task4.factory.ConfigReader.ConfigReader;
 import task4.factory.Dealer.Dealer;
 import task4.factory.Storages.*;
@@ -9,6 +9,7 @@ import task4.factory.Suppliers.AccessoriesSupplier;
 import task4.factory.Suppliers.BodiesSupplier;
 import task4.factory.Suppliers.MotorsSupplier;
 import task4.factory.model.Observer;
+import task4.factory.workerThreadpool.ThreadPool;
 import task4.view.events.*;
 import task4.view.events.Event;
 
@@ -25,6 +26,8 @@ public class Factory implements Runnable, Observer {
 
     public final StoragesMap storages;
     public final CarsStorageController carsStorageController;
+    public final ThreadPool workersThreadPool;
+    public final BlockingQueue<Runnable> tasks;
 
     public Factory(ConfigReader configReader, Settings settings) {
         this.settings = settings;
@@ -45,16 +48,20 @@ public class Factory implements Runnable, Observer {
 
         storages = new StoragesMap(motorsStorage, bodiesStorage, accessoriesStorage, carsStorage);
 
-        TasksController tasksController = new TasksController(configReader.get(ConfigReader.Settings.workers), storages);
-        carsStorageController = new CarsStorageController(carsStorage, tasksController);
+        tasks = new BlockingQueue<>();
+        workersThreadPool = new ThreadPool(configReader.get(ConfigReader.Settings.workers), tasks);
 
+        double criticalCarsStorageSize = (configReader.get(ConfigReader.Settings.storageAutoSize) * 0.1);
+        carsStorageController = new CarsStorageController(carsStorage, tasks, storages,
+                (int) criticalCarsStorageSize + 1);
+        carsStorage.setCarsStorage(carsStorageController);
         dealers = new ArrayList<>();
         boolean log = configReader.get(ConfigReader.Settings.logSale) == 1;
         for (int i = 0; i < configReader.get(ConfigReader.Settings.dealers); i++) {
             if (log) {
-                dealers.add(new Dealer(settings.dealerPeriod, carsStorageController, true));
+                dealers.add(new Dealer(settings.dealerPeriod, carsStorage, true));
             } else {
-                dealers.add(new Dealer(settings.dealerPeriod, carsStorageController));
+                dealers.add(new Dealer(settings.dealerPeriod, carsStorage));
             }
         }
     }
@@ -65,6 +72,7 @@ public class Factory implements Runnable, Observer {
         }
         bodiesSupplier.start();
         motorsSupplier.start();
+        workersThreadPool.start();
         for (Dealer dealer : dealers) {
             dealer.start();
         }

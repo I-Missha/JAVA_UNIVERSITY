@@ -6,8 +6,6 @@ import java.util.Objects;
 
 public class Storage<T> extends BlockingQueue<T> {
 
-    protected int capacity;
-
     protected int totalProduced = 0;
 
     public Storage(int capacity) {
@@ -26,23 +24,11 @@ public class Storage<T> extends BlockingQueue<T> {
         return totalProduced;
     }
 
-    @Override
-    synchronized public T get() {
-        notify();
-        return super.get();
-    }
 
     @Override
     synchronized public void put(T el) {
-        while (isFull()) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        totalProduced++;
         super.put(el);
+        totalProduced++;
     }
 
     @Override
