@@ -36,9 +36,9 @@ public class FactoryPanel extends JPanel implements ActionListener {
         SliderWithLabel motorsSupplierSlider = new SliderWithLabel(l4, factory.motorsSupplier.getPeriod() / 1000, "Motors supplier period (sec)");
 
         accessoriesSupplierSlider.setLocation(0, 0);
-        bodiesSupplierSlider.setLocation(0, 50);
-        dealerSlider.setLocation(0, 100);
-        motorsSupplierSlider.setLocation(0, 0);
+        bodiesSupplierSlider.setLocation(50, 0);
+        dealerSlider.setLocation(100, 0);
+        motorsSupplierSlider.setLocation(150, 0);
 
         this.add(accessoriesSupplierSlider);
         this.add(bodiesSupplierSlider);
@@ -73,13 +73,12 @@ public class FactoryPanel extends JPanel implements ActionListener {
         String data = getData();
         Graphics2D graphics2D = (Graphics2D) g;
         FontRenderContext frc = graphics2D.getFontRenderContext();
-        Font font = new Font("Lucida Blackletter", Font.BOLD, 30);
-        TextLayout layout = new TextLayout(data, font, frc);
+        Font font = new Font("Lucida Blackletter", Font.BOLD, 22);
 
         graphics2D.setFont(font);
         String[] outputs = data.split("\n");
         for (int i = 0; i < outputs.length; i++) {
-            graphics2D.drawString(outputs[i], 400, (int) (400 + i * 27 + 1));
+            graphics2D.drawString(outputs[i], 75, (int) (400 + i * 27 + 1));
         }
     }
 

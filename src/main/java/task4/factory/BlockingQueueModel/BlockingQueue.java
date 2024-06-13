@@ -27,6 +27,9 @@ public class BlockingQueue<T> {
         return queue.size() == capacity;
     }
 
+    public int getCurrentSize() {
+        return queue.size();
+    }
     synchronized public void put(T el) {
         while (isFull()) {
             try {

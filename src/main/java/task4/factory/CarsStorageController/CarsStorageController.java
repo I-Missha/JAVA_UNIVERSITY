@@ -30,7 +30,7 @@ public class CarsStorageController extends Thread {
             try {
                 wait();
                 synchronized (storage) {
-                    if (storage.getCurrentSize() < criticalSize) {
+                    if (storage.getCurrentSize() < criticalSize && tasks.getCurrentSize() <= criticalSize * 4) {
                         addTasks(criticalSize * 2);
                     }
                 }
