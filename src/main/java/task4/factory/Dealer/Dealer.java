@@ -35,7 +35,7 @@ public class Dealer extends Thread {
     public void run() {
         while (true) {
             try {
-                sleep((int) (period * 2));
+                sleep(period * 2);
                 Car car = carsStorage.get();
                 if (log) {
                     String msg = MessageFormat.format("Dealer {0} : Auto {1} : (Body: {2}, Motor {3}, Accessory {4})",
