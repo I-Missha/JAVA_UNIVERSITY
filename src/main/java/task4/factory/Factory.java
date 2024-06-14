@@ -72,7 +72,7 @@ public class Factory implements Runnable, Observer {
         }
         bodiesSupplier.start();
         motorsSupplier.start();
-        workersThreadPool.start();
+        workersThreadPool.run();
         for (Dealer dealer : dealers) {
             dealer.start();
         }
