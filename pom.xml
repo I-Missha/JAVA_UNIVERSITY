@@ -44,5 +44,10 @@
       <version>${junit.platform.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+      <version>24.0.0</version>
+    </dependency>
   </dependencies>
 </project>
