@@ -4,7 +4,7 @@ import task4.factory.BlockingQueueModel.BlockingQueue;
 
 import java.util.LinkedList;
 
-public class ThreadPool extends Thread {
+public class ThreadPool implements Runnable {
 
     protected LinkedList<Worker> workers;
 
